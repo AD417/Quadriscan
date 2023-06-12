@@ -3,8 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Devcade;
 
+using Quadriscan.Internals;
+
 // MAKE SURE YOU RENAME ALL PROJECT FILES FROM DevcadeGame TO YOUR YOUR GAME NAME
-namespace DevcadeGame
+namespace Quadriscan
 {
 	public class Game1 : Game
 	{
@@ -48,6 +50,7 @@ namespace DevcadeGame
 			#endregion
 			
 			// TODO: Add your initialization logic here
+			VectorGenerator.initialize(GraphicsDevice, 420, 980);
 
 			windowSize = GraphicsDevice.Viewport.Bounds;
 			
@@ -98,12 +101,10 @@ namespace DevcadeGame
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			
 			// Batches all the draw calls for this frame, and then performs them all at once
-			_spriteBatch.Begin();
-			// TODO: Add your drawing code here
-			
-			_spriteBatch.End();
+			VectorGenerator.Testcat();
 
 			base.Draw(gameTime);
+			// Exit();
 		}
 	}
 }
