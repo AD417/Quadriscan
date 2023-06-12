@@ -31,12 +31,16 @@ internal static class VectorGenerator {
 
     public static void Testcat() {
         monitor.Blank();
-        beam.setColor(true, 3, 15);
-        Position(200, 200);
-        Draw(50, 50);
-        Draw(-50, 50);
-        Draw(-50, -50);
-        Draw(50, -50);
+        for (int i = 20; i < 400; i += 30) {
+            Position(i, 40);
+            // A
+            Draw(0, -20);
+            Draw(10, -10);
+            Draw(10, 10);
+            Draw(0, 20);
+            Draw(0, -10);
+            Draw(-20, 0);
+        }
         monitor.Display();
     }
 }

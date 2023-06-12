@@ -39,12 +39,28 @@ internal class CRT {
         buffer[x + y * width] = color;
     }
 
+    private void setPixel(float x, float y, Color color) => setPixel((int)x, (int)y, color);
+
     internal void DrawLine(Line line, Color color) {
         if (line.x1 < 0 && line.x2 < 0) return;
         if (line.y1 < 0 && line.y2 < 0) return;
         if (line.x1 >= width && line.x2 >= width) return;
         if (line.y1 >= height && line.y2 >= height) return;
 
+        float x = line.x1;
+        float y = line.y1;
+        int d = Math.Max(Math.Abs(line.dy), Math.Abs(line.dx));
+        float dy = (float)line.dy / d;
+        float dx = (float)line.dx / d;
+
+        setPixel(x, y, color);
+        for (int i = 0; i < d; i++) {
+            x += dx;
+            y += dy;
+            setPixel(x, y, color);
+        }
+        /*
+        Pointless Optimization:
         // Using fixed-point arithmetic. 
         // int x,y = XXXXXXXXXXXXXXXX.DDDDDDDDDDDDDDDD
         // the "decimal" is truncated. 
@@ -65,6 +81,7 @@ internal class CRT {
             if (x < 0 || y < 0) break;
             setPixel(x >> 16, y >> 16, color);
         }
+        */
     }
 
     internal void Display() {
