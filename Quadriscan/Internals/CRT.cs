@@ -36,6 +36,8 @@ internal class CRT {
     }
 
     private void setPixel(int x, int y, Color color) {
+        if (width <= x || x < 0) return;
+        if (height <= y || y < 0) return;
         buffer[x + y * width] = color;
     }
 
