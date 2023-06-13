@@ -20,10 +20,20 @@ internal static class VectorGenerator {
         beam.Position(p);
     }
 
-    public static void Position(int dx, int dy) => Position(new(dx, dy));
+    public static void Position(int x, int y) => Position(new(x, y));
+
+    private static void PositionRel(Point p) {
+        int x, y;
+        beam.pos.Deconstruct(out x, out y);
+        beam.Position(new Point(x + p.X, y + p.Y));
+    }
 
     public static void Draw(Point p, byte brightness = 15) {
         beam.Brightness = brightness;
+        if (brightness == 0) {
+            PositionRel(p);
+            return;
+        }
         beam.Move(p);
         monitor.DrawLine(beam.LastPath(), beam.GetColor());
     }
