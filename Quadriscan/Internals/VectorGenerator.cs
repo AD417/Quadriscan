@@ -3,8 +3,6 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using Quadriscan.Instructions;
-
 namespace Quadriscan.Internals;
 
 internal static class VectorGenerator {

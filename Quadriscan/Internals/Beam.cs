@@ -28,7 +28,7 @@ internal class Beam {
     private Color cachedColor;
     private bool cacheValid;
 
-    private float Scale;
+    private float Scale = 1.0F;
 
     public Beam() {
         pos = new();
