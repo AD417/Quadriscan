@@ -102,9 +102,9 @@ namespace Quadriscan
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			
 			// Batches all the draw calls for this frame, and then performs them all at once
-			new VectorA().Draw(0,0);
-			new VectorA().Draw(24,0);
-			new VectorA().Draw(48,0);
+			Text.Draw('A', 24, 16);
+			Text.Draw('B', 48, 16);
+			Text.Draw('C', 72, 16);
 			VectorGenerator.Display();
 
 			base.Draw(gameTime);
