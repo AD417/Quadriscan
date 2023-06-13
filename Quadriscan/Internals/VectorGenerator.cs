@@ -48,6 +48,10 @@ internal static class VectorGenerator {
         beam.setScale(digital, analog);
     }
 
+    public static void Blank() {
+        monitor.Blank();
+    }
+
     public static void Display() {
         monitor.Display();
     }
