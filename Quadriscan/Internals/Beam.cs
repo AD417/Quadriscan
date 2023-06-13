@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 
 namespace Quadriscan.Internals;
@@ -13,22 +14,41 @@ internal class Beam {
     public Point lastPos { get; private set; }
 
     private Color color;
-    private byte intensity;
+
+    private byte brightness;
+    internal byte Brightness { 
+        get => brightness; 
+        set {
+            brightness = (byte)(value & 15);
+            cacheValid = false;
+        } 
+    }
     private bool colorEnabled;
     
     private Color cachedColor;
     private bool cacheValid;
 
+    private float Scale;
+
     public Beam() {
         pos = new();
         color = Color.White;
-        intensity = 15;
+        Brightness = 15;
         colorEnabled = false;
         cacheValid = false;
     }
 
+    internal void setScale(byte digital, byte analog) {
+        // Not really sure what this is about. Ah well. 
+        Scale = (float) Math.Pow(2, 1 - (digital - analog / 128.0));
+    }
+
+    private Point scalePoint(Point p) {
+        return new((int)(p.X * Scale), (int)(p.Y * Scale));
+    }
+
     /// <summary>
-    /// Get the current color, based on the intensity, color, and other 
+    /// Get the current color, based on the brightness, color, and other 
     /// settings of the beam.
     /// </summary>
     public Color GetColor() {
@@ -43,7 +63,7 @@ internal class Beam {
         if (!colorEnabled) r = g = b = 17;
         
         cacheValid = true;
-        cachedColor = new Color(r * intensity, g * intensity, b * intensity);
+        cachedColor = new Color(r * Brightness, g * Brightness, b * Brightness);
     }
 
     /// <sumamry>
@@ -53,11 +73,11 @@ internal class Beam {
     /// colorCode:  The code used for a color, as specified by the Atari. 
     ///             0 is white, 1 is yellow, 2 is purple, 3 is red, 4 is cyan,
     ///             5 is green, 6 is blue. Most other values default to white.
-    /// intensity:  How bright/intense the color is. 15 is full. Wraps around.
+    /// Brightness:  How bright/intense the color is. 15 is full. Wraps around.
     /// </summary>
-    public void setColor(bool en, byte colorCode, byte intensity) {
+    internal void setColor(bool en, byte colorCode, byte brightness) {
         this.colorEnabled = en;
-        this.intensity = (byte) (intensity & 0xF);
+        this.Brightness = brightness;
 
         switch (colorCode) {
             case 0:
@@ -86,11 +106,12 @@ internal class Beam {
                 color = new Color(0,0,17);
                 break;
         }
+        cacheValid = false;
     }
 
     public void Position(Point position) {
-        pos = position;
-        lastPos = position;
+        pos = scalePoint(position);
+        lastPos = scalePoint(position);
     }
 
     /// <summary>
@@ -98,7 +119,7 @@ internal class Beam {
     /// </summary>
     public void Move(Point displacement) {
         lastPos = pos;
-        pos += displacement;
+        pos += scalePoint(displacement);
     }
 
     /// <summary>
