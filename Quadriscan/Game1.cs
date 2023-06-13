@@ -105,6 +105,8 @@ namespace Quadriscan
 			Text.Draw('A', 24, 16);
 			Text.Draw('B', 48, 16);
 			Text.Draw('C', 72, 16);
+			Text.Draw('D', 96, 16);
+			Text.Draw('E', 120, 16);
 			VectorGenerator.Display();
 
 			base.Draw(gameTime);
