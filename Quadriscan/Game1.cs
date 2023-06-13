@@ -102,11 +102,14 @@ namespace Quadriscan
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			
 			// Batches all the draw calls for this frame, and then performs them all at once
-			Text.Draw('A', 24, 16);
-			Text.Draw('B', 48, 16);
-			Text.Draw('C', 72, 16);
-			Text.Draw('D', 96, 16);
-			Text.Draw('E', 120, 16);
+			VectorGenerator.Blank();
+
+			int x = 16, y = 24;
+			string output = "YOU WIN";
+			foreach (char c in output) {
+				Text.Draw(c, x, y);
+				x += 24;
+			}
 			VectorGenerator.Display();
 
 			base.Draw(gameTime);
