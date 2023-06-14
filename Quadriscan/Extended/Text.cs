@@ -4,6 +4,20 @@ using Quadriscan.Internals;
 namespace Quadriscan.Extended;
 
 public static class Text {
+    public static void Draw(string s, int x, int y) {
+        int currentX = x, currentY = y;
+        VectorGenerator.Position(x, y);
+        foreach (char c in s) {
+            if (c == '\n') {
+                currentX = x;
+                currentY += 32;
+                continue;
+            }
+            Draw(c, currentX, currentY);
+            currentX += 24;
+        }
+    }
+
     public static void Draw(char c, int x, int y) {
         VectorGenerator.Position(x, y);
         Draw(c);

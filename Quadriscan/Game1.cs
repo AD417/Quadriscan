@@ -105,11 +105,7 @@ namespace Quadriscan
 			VectorGenerator.Blank();
 
 			int x = 16, y = 24;
-			string output = "YOU WIN";
-			foreach (char c in output) {
-				Text.Draw(c, x, y);
-				x += 24;
-			}
+			Text.Draw("SCORE  2382\nHIGH   4859", x, y);
 			VectorGenerator.Display();
 
 			base.Draw(gameTime);
