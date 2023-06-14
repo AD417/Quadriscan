@@ -30,12 +30,8 @@ internal static class VectorGenerator {
 
     public static void Draw(Point p, byte brightness = 15) {
         beam.Brightness = brightness;
-        if (brightness == 0) {
-            PositionRel(p);
-            return;
-        }
         beam.Move(p);
-        monitor.DrawLine(beam.LastPath(), beam.GetColor());
+        if (brightness != 0) monitor.DrawLine(beam.LastPath(), beam.GetColor());
     }
 
     public static void Draw(int dx, int dy, byte brightness = 15) => Draw(new(dx, dy), brightness);
