@@ -11,6 +11,7 @@ public static class Text {
 
     public static void Draw(char c) {
         // HOOOOOO BOY!
+        // TODO: Convert this to a JSON format.
         switch (Char.ToUpper(c)) {
         case 'A':
             VectorGenerator.Draw(0, 24, 0);
@@ -192,6 +193,72 @@ public static class Text {
             break;
         case ' ':
             // Ha ha.
+            break;
+        case '1':
+            VectorGenerator.Draw(8, 0, 0);
+            VectorGenerator.Draw(0, 24, 15);
+            break;
+        case '2':
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, 12, 15);
+            VectorGenerator.Draw(-16, 0, 15);
+            VectorGenerator.Draw(0, 12, 15);
+            VectorGenerator.Draw(16, 0, 15);
+            break;
+        case '3':
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, 24, 15);
+            VectorGenerator.Draw(-16, 0, 15);
+            VectorGenerator.Draw(0, -12, 0);
+            VectorGenerator.Draw(16, 0, 15);
+            break;
+        case '4':
+            VectorGenerator.Draw(0, 12, 15);
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, 12, 15);
+            VectorGenerator.Draw(0, -24, 15);
+            break;
+        case '5':
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(-16, 0, 15);
+            VectorGenerator.Draw(0, 12, 15);
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, 12, 15);
+            VectorGenerator.Draw(-16, 0, 15);
+            break;
+        case '6':
+            VectorGenerator.Draw(16, 0, 0);
+            VectorGenerator.Draw(-16, 0, 15);
+            VectorGenerator.Draw(0, 24, 15);
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, -12, 15);
+            VectorGenerator.Draw(-16, 0, 15);
+            break;
+        case '7':
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, 24, 15);
+            break;
+        case '8':
+            VectorGenerator.Draw(0, 24, 15);
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, -24, 15);
+            VectorGenerator.Draw(-16, 0, 15);
+            VectorGenerator.Draw(0, 12, 0);
+            VectorGenerator.Draw(16, 0, 15);
+            break;
+        case '9':
+            VectorGenerator.Draw(0, 24, 0);
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, -24, 15);
+            VectorGenerator.Draw(-16, 0, 15);
+            VectorGenerator.Draw(0, 12, 15);
+            VectorGenerator.Draw(16, 0, 15);
+            break;
+        case '0':
+            VectorGenerator.Draw(0, 24, 15);
+            VectorGenerator.Draw(16, 0, 15);
+            VectorGenerator.Draw(0, -24, 15);
+            VectorGenerator.Draw(-16, 0, 15);
             break;
         default:
             throw new NotImplementedException("Cannot render character " + c);
