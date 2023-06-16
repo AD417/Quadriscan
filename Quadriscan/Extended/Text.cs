@@ -33,7 +33,7 @@ public static class Text {
             VectorGenerator.Draw(8, -8, 15);
             VectorGenerator.Draw(8, 8, 15);
             VectorGenerator.Draw(0, 16, 15);
-            VectorGenerator.Draw(0, -8, 15);
+            VectorGenerator.Draw(0, -8, 0);
             VectorGenerator.Draw(-16, 0, 15);
             break;
         case 'B':
@@ -69,14 +69,14 @@ public static class Text {
             VectorGenerator.Draw(0, 24, 15);
             VectorGenerator.Draw(16, 0, 15);
             VectorGenerator.Draw(-16, -12, 0);
-            VectorGenerator.Draw(12, 0);
+            VectorGenerator.Draw(12, 0, 0);
             break;
         case 'F':
             VectorGenerator.Draw(16, 0, 0);
             VectorGenerator.Draw(-16, 0, 15);
             VectorGenerator.Draw(0, 24, 15);
             VectorGenerator.Draw(0, -12, 0);
-            VectorGenerator.Draw(12, 0);
+            VectorGenerator.Draw(12, 0, 0);
             break;
         case 'G':
             VectorGenerator.Draw(16, 8, 0);
