@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Devcade;
 
+using Quadriscan.Extended;
 using Quadriscan.Internals;
 
 // MAKE SURE YOU RENAME ALL PROJECT FILES FROM DevcadeGame TO YOUR YOUR GAME NAME
@@ -101,7 +102,11 @@ namespace Quadriscan
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			
 			// Batches all the draw calls for this frame, and then performs them all at once
-			VectorGenerator.Testcat();
+			VectorGenerator.Blank();
+
+			int x = 16, y = 24;
+			Text.Draw("SCORE  2382\nHIGH   4859", x, y);
+			VectorGenerator.Display();
 
 			base.Draw(gameTime);
 			// Exit();

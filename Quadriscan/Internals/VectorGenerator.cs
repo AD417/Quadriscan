@@ -3,8 +3,6 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using Quadriscan.Instructions;
-
 namespace Quadriscan.Internals;
 
 internal static class VectorGenerator {
@@ -22,12 +20,18 @@ internal static class VectorGenerator {
         beam.Position(p);
     }
 
-    public static void Position(int dx, int dy) => Position(new(dx, dy));
+    public static void Position(int x, int y) => Position(new(x, y));
+
+    private static void PositionRel(Point p) {
+        int x, y;
+        beam.pos.Deconstruct(out x, out y);
+        beam.Position(new Point(x + p.X, y + p.Y));
+    }
 
     public static void Draw(Point p, byte brightness = 15) {
         beam.Brightness = brightness;
         beam.Move(p);
-        monitor.DrawLine(beam.LastPath(), beam.GetColor());
+        if (brightness != 0) monitor.DrawLine(beam.LastPath(), beam.GetColor());
     }
 
     public static void Draw(int dx, int dy, byte brightness = 15) => Draw(new(dx, dy), brightness);
@@ -38,6 +42,10 @@ internal static class VectorGenerator {
 
     public static void Scale(byte digital, byte analog) {
         beam.setScale(digital, analog);
+    }
+
+    public static void Blank() {
+        monitor.Blank();
     }
 
     public static void Display() {
